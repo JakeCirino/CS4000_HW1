@@ -139,20 +139,9 @@ int main(){
     current_max = 0;
 
     //calculate values
-    #pragma omp parallel num_threads(4)
-    #pragma omp single
-    {
-        #pragma omp task
-        calculate_horizontal();
-
-        #pragma omp task
-        calculate_vertical();
-
-        #pragma omp task
-        calculate_diagonal();
-    }
-
-    #pragma omp taskwait
+    calculate_horizontal();
+    calculate_vertical();
+    calculate_diagonal();
 
     //print values
     cout << "Maximum Value: " << current_max << endl;
